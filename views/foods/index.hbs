@@ -1,0 +1,23 @@
+<h1>Our Global Food Favourites</h1>
+
+<!--if logged in, show link-->
+{{#if user}}
+    <a href="/foods/add">Add a New Food</a>
+{{/if}}
+
+<table class="table table-striped table-hover">
+    <thead>
+        <th>Name</th>
+        <th>Country</th>
+        <th> </th>
+    </thead>
+    {{#each foods}}
+        <tr>
+            <td><a href="/foods/edit/{{this._id}}">{{this.name}}</a></td>
+            <td>{{this.country}}</td>
+            <td>
+                <a href="/foods/delete/{{this._id}}" class="text-danger" onclick="return confirmDelete();">Delete</a>
+            </td>
+        </tr>
+    {{/each}}
+</table>

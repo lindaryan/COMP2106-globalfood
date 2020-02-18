@@ -1,0 +1,18 @@
+<h1>About the Global Food Market</h1>
+<p>Our Market has great food representing many countries:</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <th>Name</th>
+    <th></th>
+    </thead>
+
+    {{#each countries}}
+        <tr>
+            <td><a href="/countries/edit/{{this._id}}">{{this.name}}</a></td>
+            <td>
+                <a href="/countries/delete/{{this._id}}" class="text-danger" onclick="return confirmDelete();">Delete</a>
+            </td>
+        </tr>
+    {{/each}}
+</table>
