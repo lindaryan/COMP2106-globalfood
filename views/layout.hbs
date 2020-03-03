@@ -28,11 +28,27 @@
                       <a class="nav-link" href="/foods">Our Food</a>
                   </li>
                   <li class="nav-item">
+                      <a class="nav-link" href="/countries">Countries</a>
+                  </li>
+              </ul>
+              <ul class="navbar-nav ml-auto">
+    {{#if user}}
+        <li class="nav-item">
+            <a class="nav-link" href="#">{{user.username}}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+{{else}}
+
+
+        <li class="nav-item">
                       <a class="nav-link" href="/register">Register</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="/login">Login</a>
                   </li>
+    {{/if}}
               </ul>
           </div>
       </nav>

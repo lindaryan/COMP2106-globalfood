@@ -7,7 +7,9 @@ var User = require('../models/user') // for registration & login
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'COMP2106 Global Food Market' });
+  res.render('index', { title: 'COMP2106 Global Food Market' })
+  user: req.user
+
 });
 
 /* GET about page */
@@ -39,7 +41,9 @@ router.get('/about', (req, res, next) => {
     }else{
       // load the main countries page
       res.render('about', {
-        countries: countries
+        countries: countries,
+        user: req.user
+
       })
     }
   })
@@ -56,11 +60,13 @@ router.post('/register', (req, res, next) => {
   User.register(new User({ username: req.body.username }), req.body.password, (err, newUser) => {
     if (err) { // reload register page and pass error details to it for display
       console.log(err)
-       res.render('register', { message: err} )
+      res.render('register', { message: err} )
     }
     else { // register was successful.  log new user in and load main food page
       req.login(newUser, (err) => {
         res.redirect('/foods')
+        user: req.user
+
       })
     }
   })
@@ -87,5 +93,25 @@ router.post('/login', passport.authenticate('local', { //strategy =  one param -
   failureMessage: 'Invalid Login'
 }))
 
+// GET: /logout => sign user out
+router.get('/logout', (req, res, next) => {
+  req.session.messages = [] // clear any msgs in session variable
 
+  // sign out & redirect to login
+  req.logout()
+  res.redirect('/login')
+  user: req.user
+
+})
+
+
+
+// GET: /logout => sign user out
+router.get('/logout', (req, res, next) => {
+  req.session.messages = [] // clear any msgs in session variable
+
+  // sign out & redirect to login
+  req.logout()
+  res.redirect('/login')
+})
 module.exports = router;

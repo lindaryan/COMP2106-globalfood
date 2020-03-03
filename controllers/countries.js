@@ -16,7 +16,9 @@ router.get('/',(req,res, next)=>{
         }else{
             // load the main countries page
             res.render('countries/index', {
-                countries: countries
+                countries: countries,
+                user: req.user
+
             })
         }
     })
@@ -38,7 +40,9 @@ router.post('/add', (req,res, next) =>{
             res.send(err)
         }else{
             // load the updated countries index
-            res.redirect('/about');
+            res.redirect('/about')
+            user: req.user
+
         }
     })
 })
@@ -50,7 +54,8 @@ router.get('/delete/:_id', (req, res, next)=>{
             console.log(err)
             res.send(err)
         }else{
-            res.redirect('/about');
+            res.redirect('/about')
+            user: req.user
         }
     })
 })
