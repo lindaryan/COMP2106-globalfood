@@ -114,4 +114,34 @@ router.get('/logout', (req, res, next) => {
   req.logout()
   res.redirect('/login')
 })
+
+// GET: /google => invoke Google Sign-In
+router.get('/google', passport.authenticate('google', {
+  scope: ['profile']
+}), (req, res, next) => {})
+
+// GET: /google/callback => process successful google sign-in request
+router.get('/google/callback', passport.authenticate('google', {
+  failureRedirect: '/login'
+}), (req, res, next) => {
+  res.redirect('/foods')
+})
+
+// GET: /google => invoke Google Sign-In
+router.get('/google', passport.authenticate('google', {
+  scope: ['profile']
+}), (req, res, next) => {})
+
+// GET: /facebook/callback => process successful facebook sign-in request
+router.get('/facebook/callback', passport.authenticate('facebook') ,
+    (req, res, next) => {}
+)
+
+// GET /facebook/callbck => process successful facebook login
+router.get('/facebook/callback', passport.authenticate('facebook', {
+  failureRedirect: '/login'
+}), (req, res, next) => {
+  res.redirect('/foods')
+    })
+
 module.exports = router;

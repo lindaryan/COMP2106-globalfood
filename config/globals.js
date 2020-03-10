@@ -6,6 +6,14 @@ module.exports = {
             'clientId': '305161992946-sptgf282fhit65qtvp1k2n0lir01se3m.apps.googleusercontent.com',
             'clientSecret': 'CjqRgUjrT8QbZp5BsTwGyt10',
             'callbackURL': 'http://localhost:3000/google/callback'
+            // https://comp2106-globalfood.herokuapp.com/google/callback
+        },
+        'facebook': {
+            'clientId': '2894109547336457',
+            'clientSecret': 'e199f71debf6bc0ed62f6b5a7b26021a',
+            'callbackURL': 'http://localhost:3000/facebook/callback'
+            // https://comp2106-globalfood.herokuapp.com/facebook/callback
         }
     }
 }
+
